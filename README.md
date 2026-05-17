@@ -1,2 +1,6 @@
 # AD_prediction
-Gaussian shape descriptors+SVM_implementation
+Implementation of Gaussian shape descriptors + SVM
+Evaluation of accuracy, sensitivity, specificity and AUC.
+
+Reference:
+Morsy, S. E., Zayed, N., & Yassine, I. A. (2023). Hierarchical based classification method based on fusion of Gaussian map descriptors for Alzheimer diagnosis using T1-weighted magnetic resonance imaging. Scientific Reports, 13(1), 13734.
