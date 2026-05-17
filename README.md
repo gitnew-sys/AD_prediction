@@ -3,10 +3,7 @@ Implementation of Gaussian shape descriptors + SVM.
 
 Evaluation of accuracy, sensitivity, specificity and AUC.
 
-Dataset:
-
 Download dataset here:
-
 https://drive.google.com/drive/folders/1R4UBBQHkXutGIxM2IlRg2qNLpN_TY23r?usp=drive_link
 
 Reference:
