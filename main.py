@@ -20,7 +20,7 @@ def load_real_data(data_dir):
             m_h, m_a = trimesh.load(h_p), trimesh.load(a_p)
             f_h, f_a = extract_all_descriptors(m_h), extract_all_descriptors(m_a)
             
-            # 自动识别标签: 文件夹名含 AD 为 2, 含 MCI 为 1, 否则为 0
+            # 自动识别标签: 文件夹名含 AD 为 2, 含 MCI 为 1, NC为 0
             label = 0
             if "AD" in sub.upper(): label = 2
             elif "MCI" in sub.upper(): label = 1
@@ -45,19 +45,19 @@ def main():
     dataset = real_data if real_data else generate_mock_data()
     df = pd.DataFrame(dataset)
     
-    # --- 第一阶段: NC (0) vs Abnormal (1,2) ---
+    # 第一阶段: NC (0) vs Abnormal (1,2) ---
     print("\n[Phase 1] NC vs. Abnormal ...")
     X_all = np.stack(df['Feature_ShapeOp'].values)
     y_stage1 = (df['Label'] > 0).astype(int)
     
     scores1 = fisher_score(X_all, y_stage1)
-    top_idx1 = np.argsort(scores1)[-30:] # 论文中通常选择前 30 个左右特征
+    top_idx1 = np.argsort(scores1)[-30:] 
     X_s1 = X_all[:, top_idx1]
     
     clf1 = HierarchicalClassifier()
     res1 = clf1.evaluate(X_s1, y_stage1, "Stage 1")
     
-    # --- 第二阶段: AD (2) vs MCI (1) ---
+    # 第二阶段: AD (2) vs MCI (1) ---
     print("[Phase 2] AD vs. MCI ...")
     df_abnormal = df[df['Label'] > 0]
     
