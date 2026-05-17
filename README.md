@@ -1,5 +1,5 @@
 # AD_prediction
-Implementation of Gaussian shape descriptors + SVM
+Implementation of Gaussian shape descriptors + SVM.
 
 Evaluation of accuracy, sensitivity, specificity and AUC.
 
